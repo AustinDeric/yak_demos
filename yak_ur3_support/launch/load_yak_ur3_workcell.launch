@@ -1,0 +1,3 @@
+<launch>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find yak_ur3_support)/urdf/yak_ur3_workcell.xacro'" />
+</launch>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>yak_ur5_support</name>
+  <version>0.0.0</version>
+  <license>TODO</license>
+  <description>The yak_ur5_support package</description>
+
+  <maintainer email="aderic@todo.todo">aderic</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>ur_description</exec_depend>
+
+  <export>
+  </export>
+
+</package>

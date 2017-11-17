@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<robot name="yak_ur3_workcell" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
+  <xacro:ur5_robot prefix="" joint_limited="true"/>
+
+  <xacro:property name="head_depth" value="0.15" />
+  <xacro:property name="head_depth_variation" value="0" />
+  <xacro:property name="inch_to_meter" value="0.0254" />
+
+  <link name="world_frame"/>
+
+  <link name="stand">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <cylinder length="${41*inch_to_meter}" radius="${3*inch_to_meter}" />
+      </geometry>
+      <material name="blue">
+          <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="${41*inch_to_meter}" radius="${3*inch_to_meter}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="end_effector">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <box size="0.2032 0.1524 0.0762" />
+      </geometry>
+      <material name="green">
+          <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2032 0.1524 0.0762" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="camera_link"/>
+
+  <joint name="world_to_stand" type="fixed">
+    <parent link="world_frame" />
+    <child link = "stand" />
+    <origin xyz="0.0 0.0 ${41*inch_to_meter/2}" rpy="0 0.0 0.0" />
+  </joint>
+
+  <joint name="stand_to_ur5" type="fixed">
+    <parent link="stand" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 ${41*inch_to_meter/2}" rpy="0.0 0.0 -3.92699081699" />
+  </joint>
+
+  <joint name="tool0_to_eef" type="fixed">
+    <parent link="tool0" />
+    <child link = "end_effector" />
+    <origin xyz="0 0 ${0.0762/2}" rpy="0.0 0.0 1.57" />
+  </joint>
+
+  <joint name="eef_to_camera_link" type="fixed">
+    <parent link="end_effector" />
+    <child link = "camera_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="-1.57 0.0 0.0" />
+  </joint>
+
+</robot>

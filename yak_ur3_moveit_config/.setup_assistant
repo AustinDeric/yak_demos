@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: yak_ur3_support
+    relative_path: urdf/yak_ur3_workcell.urdf.xacro
+  SRDF:
+    relative_path: config/yak_ur3_workcell.srdf
+  CONFIG:
+    author_name: AustinDerc
+    author_email: Austin.Deric@swri.org
+    generated_timestamp: 1510857337

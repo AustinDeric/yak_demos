@@ -1,0 +1,10 @@
+<launch>
+  <arg name="sim" default="true" />
+  <arg name="robot_ip" unless="$(arg sim)" />
+
+  <include file="$(find yak)/launch/launch_xtion.launch" />
+  <include file="$(find yak_ur3_moveit_config)/launch/moveit_planning_execution.launch" />
+  <include file="$(find nbv_planner)/launch/octomap_mapping.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yak_ur3_support)/launch/yak_ur3_demo.rviz" required="true" output="screen"/>
+
+</launch>

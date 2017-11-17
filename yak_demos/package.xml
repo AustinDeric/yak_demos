@@ -1,0 +1,22 @@
+<package>
+  <name>yak_demos</name>
+  <version>0.0.0</version>
+  <description>
+      yak demonstration
+  </description>
+
+  <maintainer email="austin.deric@swri.org">AustinDeric</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>yak_ur3_support</run_depend>
+  <run_depend>yak_ur3_moveit_config</run_depend>
+  <run_depend>yak_ur5_support</run_depend>
+  <run_depend>yak_ur5_moveit_config</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<robot name="yak_ur3_workcell" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur3.urdf.xacro"/>
+  <xacro:ur3_robot prefix="" joint_limited="false"/>
+
+  <xacro:property name="head_depth" value="0.15" />
+  <xacro:property name="head_depth_variation" value="0" />
+
+  <link name="world_frame"/>
+
+  <link name="table">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <box size="2 0.6096 0.8128" />
+      </geometry>
+      <material name="red">
+          <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="2 0.6096 0.8128" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="adapter">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <cylinder length="0.0127" radius="0.2286" />
+      </geometry>
+      <material name="blue">
+          <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.0127" radius="0.2286" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="end_effector">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <box size="0.2032 0.1524 0.0762" />
+      </geometry>
+      <material name="green">
+          <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2032 0.1524 0.0762" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="camera_link"/>
+
+  <joint name="world_to_table" type="fixed">
+    <parent link="world_frame" />
+    <child link = "table" />
+    <origin xyz="0.0 0.0 ${0.8128/2}" rpy="0 0.0 0.0" />
+  </joint>
+
+  <joint name="table_to_adapter" type="fixed">
+    <parent link="table" />
+    <child link = "adapter" />
+    <origin xyz="${1-0.2286} ${-0.0762} ${0.8128/2}" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="adapter_to_ur3" type="fixed">
+    <parent link="adapter" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="tool0_to_eef" type="fixed">
+    <parent link="tool0" />
+    <child link = "end_effector" />
+    <origin xyz="0 0 ${0.0762/2}" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="eef_to_camera_link" type="fixed">
+    <parent link="end_effector" />
+    <child link = "camera_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>
