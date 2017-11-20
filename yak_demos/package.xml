@@ -11,6 +11,8 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <run_depend>yak</run_depend>
+
   <run_depend>yak_ur3_support</run_depend>
   <run_depend>yak_ur3_moveit_config</run_depend>
   <run_depend>yak_ur5_support</run_depend>
