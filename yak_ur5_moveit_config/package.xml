@@ -3,7 +3,7 @@
   <name>yak_ur5_moveit_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the yak_ur3_workcell with the MoveIt! Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the yak_ur5_workcell with the MoveIt! Motion Planning Framework
   </description>
   <author email="austin.deric@swri.org">AustinDeric</author>
   <maintainer email="austin.deric@swri.org">AustinDeric</maintainer>

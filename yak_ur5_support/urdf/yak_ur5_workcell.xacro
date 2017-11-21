@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="yak_ur3_workcell" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="yak_ur5_workcell" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro"/>
   <xacro:ur5_robot prefix="" joint_limited="true"/>
@@ -9,6 +9,7 @@
   <xacro:property name="inch_to_meter" value="0.0254" />
 
   <link name="world_frame"/>
+  <link name="tsdf_frame"/>
 
   <link name="stand">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -26,6 +27,41 @@
       </geometry>
     </collision>
   </link>
+
+  <link name="right_wall">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <box size="2 .1 2" />
+      </geometry>
+      <material name="blue">
+          <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="2 .1 2" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="back_wall">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <visual>
+      <geometry>
+        <box size=".1 2 2" />
+      </geometry>
+      <material name="blue">
+          <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".1 2 2" />
+      </geometry>
+    </collision>
+  </link>
+
 
   <link name="end_effector">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
@@ -69,5 +105,25 @@
     <child link = "camera_link" />
     <origin xyz="0.0 0.0 0.0" rpy="-1.57 0.0 0.0" />
   </joint>
+
+  <!-- todo these paremeters need to  be synced with kinfu node loanch params -->
+  <joint name="world_frame_to_tsdf_frame" type="fixed">
+    <parent link="world_frame" />
+    <child link = "tsdf_frame" />
+    <origin xyz="0.4 -0.5 1" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="world_to_right_wall" type="fixed">
+    <parent link="world_frame" />
+    <child link = "right_wall" />
+    <origin xyz="0 -0.8636 1" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="world_to_back_wall" type="fixed">
+    <parent link="world_frame" />
+    <child link = "back_wall" />
+    <origin xyz="-1 0.0 1" rpy="0.0 0.0 0.0" />
+  </joint>
+
 
 </robot>
