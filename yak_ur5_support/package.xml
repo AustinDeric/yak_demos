@@ -10,6 +10,7 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <exec_depend>ur_description</exec_depend>
+  <exec_depend>yak</exec_depend>
 
   <export>
   </export>

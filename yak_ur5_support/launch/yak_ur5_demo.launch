@@ -13,4 +13,6 @@
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yak_ur5_support)/launch/yak_ur5_demo.rviz" required="true" output="screen"/>
 
+  <node name="exploration_node" pkg="nbv_planner" type="exploration_controller_node" output="screen"/>
+
 </launch>

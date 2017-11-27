@@ -1,0 +1,3 @@
+- git: {local-name: industrial_moveit, uri: 'https://github.com/ros-industrial/industrial_moveit.git', version: kinetic-devel}
+- git: {local-name: universal_robot, uri: 'https://github.com/ros-industrial/universal_robot.git', version: kinetic-devel}
+- git: {local-name: yak, uri: 'https://github.com/AustinDeric/yak.git', version: nbv-updates}
